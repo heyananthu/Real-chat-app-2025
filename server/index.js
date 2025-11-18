@@ -7,7 +7,6 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const {  server, app } = require('./lib/socket.js');
 const path = require('path');
-const __dirname = path.dirname(require.main.filename);
 
 
 
