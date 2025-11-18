@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const {  server, app } = require('./lib/socket.js');
 const path = require('path');
+const __dirname = path.dirname(require.main.filename);
 
 
 
@@ -30,10 +31,10 @@ app.use('/api/message', messageRoutes);
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/dist')));
+    app.use(express.static(path.join(__dirname, '../client/chatapp/dist')));
 
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+        res.sendFile(path.join(__dirname, '../client/chatapp/dist/index.html'));
     });
 }
 
