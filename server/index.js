@@ -14,8 +14,6 @@ const path = require('path');
 dotenv.config();
 db.connectDB();
 
-const __dirname = path.resolve();
-
 // add body parsers before routes
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
