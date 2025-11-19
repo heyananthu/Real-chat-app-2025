@@ -5,7 +5,7 @@ const db = require('./lib/db');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const {  server, app } = require('./lib/socket.js');
+const { server, app } = require('./lib/socket.js');
 const path = require('path');
 
 
@@ -32,9 +32,10 @@ app.use('/api/message', messageRoutes);
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/chatapp/dist')));
 
-    app.get('*', (req, res) => {
+    app.use((req, res) => {
         res.sendFile(path.join(__dirname, '../client/chatapp/dist/index.html'));
     });
+
 }
 
 server.listen(process.env.PORT, () => {
